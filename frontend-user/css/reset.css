@@ -12,10 +12,10 @@ html {
 }
 
 body {
-    font-family: "Source Han Sans SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-family-sans);
     line-height: 1.5;
-    color: #333333;
-    background-color: #F5F2EB;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-page);
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -65,10 +65,10 @@ canvas {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #CCCCCC;
-    border-radius: 3px;
+    background: var(--color-scrollbar);
+    border-radius: var(--radius-scrollbar);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #AAAAAA;
+    background: var(--color-scrollbar-hover);
 }

@@ -38,10 +38,11 @@
     background-color: var(--color-primary-hover);
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn-tool {
     background-color: var(--color-bg-input);
     color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    border: var(--border-default);
 }
 
 .btn-secondary:hover {
@@ -78,9 +79,6 @@
 }
 
 .btn-tool {
-    background-color: var(--color-bg-input);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-xs);
 }
@@ -128,15 +126,22 @@
     gap: var(--spacing-sm);
 }
 
+/* 卡片式可选项的公共表面样式（透镜素材 / 已保存设计 / 预设 / 工具栏下拉） */
+.lens-item,
+.design-item,
+.preset-item,
+.select-light-mode {
+    background-color: var(--color-bg-input);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+}
+
 .lens-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     cursor: grab;
     transition: all var(--transition-fast);
     position: relative;
@@ -163,8 +168,8 @@
 
 /* 透镜图标样式 */
 .lens-convex {
-    background: linear-gradient(90deg, transparent 30%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 70%);
-    border-radius: 50%;
+    background: var(--gradient-lens-primary);
+    border-radius: var(--radius-circle);
 }
 
 .lens-concave {
@@ -174,10 +179,10 @@
 
 .lens-plano {
     background: var(--color-primary);
-    width: 8px;
+    width: var(--spacing-sm);
     height: 40px;
     margin: 0 auto;
-    border-radius: 2px;
+    border-radius: var(--radius-xs);
 }
 
 .lens-aspheric {
@@ -186,11 +191,11 @@
 }
 
 .lens-low-dispersion {
-    background: linear-gradient(90deg, transparent 30%, var(--color-accent) 30%, var(--color-accent) 70%, transparent 70%);
+    background: var(--gradient-lens-accent);
 }
 
 .lens-high-index {
-    background: linear-gradient(90deg, transparent 30%, #5D4E8C 30%, #5D4E8C 70%, transparent 70%);
+    background: var(--gradient-lens-high-index);
 }
 
 .lens-name {
@@ -201,13 +206,13 @@
 
 .btn-help-small {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: var(--spacing-xxs);
+    right: var(--spacing-xxs);
     width: 16px;
     height: 16px;
     font-size: 10px;
     background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
+    border: var(--border-default);
     border-radius: var(--radius-full);
     color: var(--color-text-hint);
     display: flex;
@@ -260,7 +265,7 @@
 
 .param-value {
     margin-left: auto;
-    font-family: "Courier New", monospace;
+    font-family: var(--font-family-mono);
     color: var(--color-primary);
     font-weight: var(--font-weight-bold);
 }
@@ -308,7 +313,7 @@
     width: 100%;
     padding: var(--spacing-sm);
     background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
+    border: var(--border-default);
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     color: var(--color-text-primary);
@@ -325,15 +330,12 @@
     gap: var(--spacing-sm);
     margin-top: var(--spacing-md);
     padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border-light);
+    border-top: var(--border-light);
 }
 
 /* 下拉选择 */
 .select-light-mode {
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     font-size: var(--font-size-xs);
     color: var(--color-text-primary);
     cursor: pointer;
@@ -351,7 +353,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-overlay-modal);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -359,24 +361,34 @@
     padding: var(--spacing-md);
 }
 
-.modal {
+/* 模态/引导弹层公共表面 */
+.modal,
+.guide-modal {
     background-color: var(--color-bg-card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     width: 100%;
+    overflow: hidden;
+}
+
+.modal {
     max-width: 400px;
     max-height: 80vh;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.modal-header {
+/* 模态框头/尾公共行样式 */
+.modal-header,
+.modal-footer {
     display: flex;
+    padding: var(--spacing-md);
+}
+
+.modal-header {
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-md);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-default);
 }
 
 .modal-header h3 {
@@ -396,11 +408,9 @@
 }
 
 .modal-footer {
-    display: flex;
     justify-content: flex-end;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
+    border-top: var(--border-default);
 }
 
 /* 表单 */
@@ -420,7 +430,7 @@
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
+    border: var(--border-default);
     border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     color: var(--color-text-primary);
@@ -460,15 +470,12 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
 }
 
 .design-item-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--spacing-xxs);
 }
 
 .design-item-name {
@@ -499,9 +506,6 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
@@ -512,14 +516,14 @@
 }
 
 .preset-icon {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
 }
 
 .preset-info h4 {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
-    margin-bottom: 2px;
+    margin-bottom: var(--spacing-xxs);
 }
 
 .preset-info p {
@@ -533,13 +537,13 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--color-border-light);
+    border-bottom: var(--border-light);
 }
 
 .setting-label {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--spacing-xxs);
 }
 
 .setting-label span:first-child {
@@ -608,16 +612,21 @@
 }
 
 /* 提示框 */
+/* 深色提示气泡（帮助提示框 / Toast） */
+.tooltip,
+.toast {
+    background-color: var(--color-text-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
 .tooltip {
     position: fixed;
     z-index: 1100;
     padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-text-primary);
-    color: var(--color-text-inverse);
     font-size: var(--font-size-xs);
-    border-radius: var(--radius-md);
     max-width: 200px;
-    box-shadow: var(--shadow-md);
     pointer-events: none;
 }
 
@@ -635,12 +644,8 @@
 
 .toast {
     padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-text-primary);
-    color: var(--color-text-inverse);
     font-size: var(--font-size-sm);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-    animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+    animation: toastIn var(--transition-normal), toastOut var(--transition-normal) 1.7s forwards;
 }
 
 .toast.success {
@@ -684,7 +689,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--color-overlay-guide);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -693,12 +698,7 @@
 }
 
 .guide-modal {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    width: 100%;
     max-width: 420px;
-    overflow: hidden;
 }
 
 .guide-content {
@@ -771,14 +771,19 @@
     color: var(--color-primary);
 }
 
+/* 浅蓝提示条（底部知识提示 / 引导提示） */
+.knowledge-tip,
 .guide-hint {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
     background-color: var(--color-primary-light);
     border-radius: var(--radius-md);
+}
+
+.guide-hint {
+    justify-content: center;
     margin-bottom: var(--spacing-lg);
 }
 
@@ -798,12 +803,12 @@
     left: 0;
     right: 0;
     background-color: var(--color-bg-card);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-default);
     box-shadow: var(--shadow-md);
     z-index: 100;
     display: flex;
     flex-direction: column;
-    max-height: 40vh;
+    max-height: var(--quiz-panel-height);
     overflow: hidden;
 }
 
@@ -812,7 +817,7 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-bottom: 1px solid var(--color-border-light);
+    border-bottom: var(--border-light);
     background-color: var(--color-primary-light);
 }
 
@@ -838,7 +843,7 @@
 .quiz-score {
     display: flex;
     align-items: baseline;
-    gap: 2px;
+    gap: var(--spacing-xxs);
     font-size: var(--font-size-sm);
 }
 
@@ -851,7 +856,7 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
-    font-family: "Courier New", monospace;
+    font-family: var(--font-family-mono);
 }
 
 .quiz-score .score-separator {
@@ -860,7 +865,7 @@
 
 .quiz-score .score-total {
     color: var(--color-text-hint);
-    font-family: "Courier New", monospace;
+    font-family: var(--font-family-mono);
 }
 
 .quiz-panel-body {
@@ -904,7 +909,7 @@
     justify-content: flex-end;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-md);
-    border-top: 1px solid var(--color-border-light);
+    border-top: var(--border-light);
     background-color: var(--color-bg-input);
 }
 
@@ -947,7 +952,7 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 4px;
+    gap: var(--spacing-xs);
     margin-bottom: var(--spacing-md);
 }
 
@@ -955,7 +960,7 @@
     font-size: var(--font-size-xxl);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
-    font-family: "Courier New", monospace;
+    font-family: var(--font-family-mono);
 }
 
 .quiz-result-score-label {
@@ -1029,7 +1034,7 @@
     display: flex;
     justify-content: space-around;
     padding: var(--spacing-md) 0;
-    border-top: 1px solid var(--color-border);
+    border-top: var(--border-default);
     margin-top: var(--spacing-md);
 }
 
@@ -1044,7 +1049,7 @@
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
-    font-family: "Courier New", monospace;
+    font-family: var(--font-family-mono);
 }
 
 .stat-label {
@@ -1054,30 +1059,5 @@
 
 /* 测验模式激活时调整主内容区 */
 .app-container.quiz-mode .app-main {
-    padding-top: 40vh;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .quiz-panel {
-        max-height: 50vh;
-    }
-    
-    .app-container.quiz-mode .app-main {
-        padding-top: 50vh;
-    }
-    
-    .quiz-title-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
-    }
-    
-    .quiz-panel-footer {
-        flex-direction: column;
-    }
-    
-    .quiz-panel-footer .btn {
-        width: 100%;
-    }
+    padding-top: var(--quiz-panel-height);
 }
