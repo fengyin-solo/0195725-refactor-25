@@ -26,6 +26,21 @@
     --color-error: #783F27;
     --color-warning: #9B7B43;
     --color-warning-light: #FDF3E7;
+
+    /* 遮罩色 */
+    --color-overlay: rgba(0, 0, 0, 0.5);
+    --color-overlay-heavy: rgba(0, 0, 0, 0.7);
+
+    /* 画布色 */
+    --color-bg-canvas: #FAFAFA;
+    --color-bg-drop-hint: rgba(74, 144, 226, 0.1);
+
+    /* 特殊镜片色 */
+    --color-lens-high-index: #5D4E8C;
+
+    /* 滚动条色 */
+    --color-scrollbar: #CCCCCC;
+    --color-scrollbar-hover: #AAAAAA;
     
     /* 边框色 */
     --color-border: #E5E5E5;
@@ -39,13 +54,16 @@
     --color-ray-blue: #3498DB;
     
     /* 间距 */
+    --spacing-xxs: 2px;
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
-    
+
     /* 圆角 */
+    --radius-xxs: 2px;
+    --radius-xs: 3px;
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
@@ -62,6 +80,7 @@
     --transition-slow: 0.5s ease;
     
     /* 字体大小 */
+    --font-size-micro: 10px;
     --font-size-xs: 12px;
     --font-size-sm: 14px;
     --font-size-md: 16px;

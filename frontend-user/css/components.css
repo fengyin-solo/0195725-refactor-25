@@ -38,7 +38,9 @@
     background-color: var(--color-primary-hover);
 }
 
-.btn-secondary {
+/* 浅底色描边按钮：次要按钮、工具按钮 */
+.btn-secondary,
+.btn-tool {
     background-color: var(--color-bg-input);
     color: var(--color-text-primary);
     border: 1px solid var(--color-border);
@@ -78,9 +80,6 @@
 }
 
 .btn-tool {
-    background-color: var(--color-bg-input);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-xs);
 }
@@ -128,21 +127,28 @@
     gap: var(--spacing-sm);
 }
 
+/* 浅底色描边卡片：透镜素材、预设项、已存设计 */
+.lens-item,
+.preset-item,
+.design-item {
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
 .lens-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     cursor: grab;
     transition: all var(--transition-fast);
     position: relative;
 }
 
-.lens-item:hover {
+.lens-item:hover,
+.preset-item:hover {
     border-color: var(--color-primary);
     background-color: var(--color-primary-light);
 }
@@ -177,7 +183,7 @@
     width: 8px;
     height: 40px;
     margin: 0 auto;
-    border-radius: 2px;
+    border-radius: var(--radius-xxs);
 }
 
 .lens-aspheric {
@@ -190,7 +196,7 @@
 }
 
 .lens-high-index {
-    background: linear-gradient(90deg, transparent 30%, #5D4E8C 30%, #5D4E8C 70%, transparent 70%);
+    background: linear-gradient(90deg, transparent 30%, var(--color-lens-high-index) 30%, var(--color-lens-high-index) 70%, transparent 70%);
 }
 
 .lens-name {
@@ -201,11 +207,11 @@
 
 .btn-help-small {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: var(--spacing-xxs);
+    right: var(--spacing-xxs);
     width: 16px;
     height: 16px;
-    font-size: 10px;
+    font-size: var(--font-size-micro);
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
@@ -304,26 +310,42 @@
     color: var(--color-text-hint);
 }
 
-.param-select {
-    width: 100%;
-    padding: var(--spacing-sm);
+/* 浅底色描边表单控件：下拉选择、输入框 */
+.param-select,
+.select-light-mode,
+.form-input {
     background-color: var(--color-bg-input);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
     color: var(--color-text-primary);
+}
+
+.param-select,
+.select-light-mode {
     cursor: pointer;
 }
 
-.param-select:focus {
+.param-select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.param-select:focus,
+.select-light-mode:focus,
+.form-input:focus {
     border-color: var(--color-primary);
 }
 
-.param-actions {
+.param-actions,
+.setting-actions {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
     margin-top: var(--spacing-md);
+}
+
+.param-actions {
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--color-border-light);
 }
@@ -331,42 +353,39 @@
 /* 下拉选择 */
 .select-light-mode {
     padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     font-size: var(--font-size-xs);
-    color: var(--color-text-primary);
-    cursor: pointer;
     min-height: 32px;
 }
 
-.select-light-mode:focus {
-    border-color: var(--color-primary);
-}
-
-/* 模态框 */
-.modal-overlay {
+/* 遮罩层：模态框、引导层 */
+.modal-overlay,
+.guide-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background-color: var(--color-overlay);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
     padding: var(--spacing-md);
 }
 
-.modal {
+.modal-overlay {
+    z-index: 1000;
+}
+
+/* 卡片式弹层：模态框、引导弹层 */
+.modal,
+.guide-modal {
     background-color: var(--color-bg-card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     width: 100%;
+    overflow: hidden;
+}
+
+.modal {
     max-width: 400px;
     max-height: 80vh;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -389,7 +408,8 @@
     padding: var(--spacing-xs);
 }
 
-.modal-body {
+.modal-body,
+.quiz-panel-body {
     padding: var(--spacing-md);
     overflow-y: auto;
     flex: 1;
@@ -419,16 +439,8 @@
 .form-input {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
-    color: var(--color-text-primary);
     transition: border-color var(--transition-fast);
-}
-
-.form-input:focus {
-    border-color: var(--color-primary);
 }
 
 .form-input::placeholder {
@@ -460,15 +472,12 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-sm);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
 }
 
 .design-item-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--spacing-xxs);
 }
 
 .design-item-name {
@@ -499,16 +508,8 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     cursor: pointer;
     transition: all var(--transition-fast);
-}
-
-.preset-item:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary-light);
 }
 
 .preset-icon {
@@ -519,7 +520,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
-    margin-bottom: 2px;
+    margin-bottom: var(--spacing-xxs);
 }
 
 .preset-info p {
@@ -539,7 +540,7 @@
 .setting-label {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--spacing-xxs);
 }
 
 .setting-label span:first-child {
@@ -551,13 +552,6 @@
 .setting-hint {
     font-size: var(--font-size-xs);
     color: var(--color-text-hint);
-}
-
-.setting-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
 }
 
 /* 开关 */
@@ -607,17 +601,22 @@
     transform: translateX(20px);
 }
 
+/* 深色气泡提示：提示框、Toast */
+.tooltip,
+.toast {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-text-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
 /* 提示框 */
 .tooltip {
     position: fixed;
     z-index: 1100;
-    padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-text-primary);
-    color: var(--color-text-inverse);
     font-size: var(--font-size-xs);
-    border-radius: var(--radius-md);
     max-width: 200px;
-    box-shadow: var(--shadow-md);
     pointer-events: none;
 }
 
@@ -634,12 +633,7 @@
 }
 
 .toast {
-    padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-text-primary);
-    color: var(--color-text-inverse);
     font-size: var(--font-size-sm);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
     animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
 }
 
@@ -679,26 +673,12 @@
 
 /* 引导遮罩 */
 .guide-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--color-overlay-heavy);
     z-index: 2000;
-    padding: var(--spacing-md);
 }
 
 .guide-modal {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    width: 100%;
     max-width: 420px;
-    overflow: hidden;
 }
 
 .guide-content {
@@ -838,7 +818,7 @@
 .quiz-score {
     display: flex;
     align-items: baseline;
-    gap: 2px;
+    gap: var(--spacing-xxs);
     font-size: var(--font-size-sm);
 }
 
@@ -861,12 +841,6 @@
 .quiz-score .score-total {
     color: var(--color-text-hint);
     font-family: "Courier New", monospace;
-}
-
-.quiz-panel-body {
-    padding: var(--spacing-md);
-    overflow-y: auto;
-    flex: 1;
 }
 
 .quiz-question-title {
@@ -947,7 +921,7 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 4px;
+    gap: var(--spacing-xs);
     margin-bottom: var(--spacing-md);
 }
 
@@ -1055,29 +1029,4 @@
 /* 测验模式激活时调整主内容区 */
 .app-container.quiz-mode .app-main {
     padding-top: 40vh;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .quiz-panel {
-        max-height: 50vh;
-    }
-    
-    .app-container.quiz-mode .app-main {
-        padding-top: 50vh;
-    }
-    
-    .quiz-title-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
-    }
-    
-    .quiz-panel-footer {
-        flex-direction: column;
-    }
-    
-    .quiz-panel-footer .btn {
-        width: 100%;
-    }
 }
